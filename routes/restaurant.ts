@@ -21,5 +21,11 @@ router.route('/').post(
     jwtParse,
     Controller.createRestuarant)
 router.route('/').get(authMiddleware,jwtParse,Controller.GetRestuarant)
+router.route('/').put(  upload.single("imageFile"),
+validateMyRestuarantRequest,
+authMiddleware,
+jwtParse,
+Controller.UpdateRestuarant
+)
 
 export default router;
