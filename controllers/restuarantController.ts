@@ -15,7 +15,14 @@ const searchRestuarant = async (req:Request,res:Response)=>{
     query["city"] = new RegExp(city,"i")
     const cityCheck = await Restaurant.countDocuments(query);
     if(cityCheck === 0){
-        return res.status(StatusCodes.NOT_FOUND).json([]);
+        return res.status(StatusCodes.NOT_FOUND).json({
+            data:[],
+            pagination:{
+                total:0,
+                page:1,
+                pages:1
+            }
+        });
     }
     if(selectedCuisines){
         const cuisinesArray = selectedCuisines.split(",").map(
