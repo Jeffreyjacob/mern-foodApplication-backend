@@ -53,7 +53,7 @@ const UpdateRestuarant = async (req:Request,res:Response)=>{
      if(!restaurant){
       return res.status(StatusCodes.NOT_FOUND).json({message:"restuarant not found"})
      }
-     restaurant.restaurantName = req.body.restuarantName;
+     restaurant.restaurantName = req.body.restaurantName;
      restaurant.city = req.body.city;
      restaurant.country = req.body.country;
      restaurant.deliveryPrice = req.body.deliveryPrice;
