@@ -30,6 +30,19 @@ const createRestuarant = async(req:Request,res:Response)=>{
     }
 }
 
+const GetRestuarant = async (req:Request,res:Response)=>{
+  try{
+  const  restuarant = await Restaurant.findOne({user:req.userId})
+    if(!restuarant){
+      return res.status(StatusCodes.NOT_FOUND).json({message:"restuarant not found"})
+    }
+     res.status(StatusCodes.OK).json(restuarant)
+  }catch(error){
+     console.log(error)
+     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message:"Error fetching data"})
+  }
+}
+
 export default {
-    createRestuarant,
+    createRestuarant,GetRestuarant
 }

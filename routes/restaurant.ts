@@ -20,5 +20,6 @@ router.route('/').post(
     authMiddleware,
     jwtParse,
     Controller.createRestuarant)
+router.route('/').get(authMiddleware,jwtParse,Controller.GetRestuarant)
 
 export default router;
