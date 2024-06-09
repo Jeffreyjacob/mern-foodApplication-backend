@@ -8,6 +8,7 @@ import errorHandlerMiddleWare from './middleware/errorHandlerMiddleware';
 import notFound from './middleware/notFound';
 import {v2 as cloudinary} from 'cloudinary';
 import resturantRouter from './routes/restaurant';
+import mainRestuarantRouter from './routes/RestaurantRoutes';
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -23,6 +24,7 @@ app.use(cors())
 app.use('/api/v1/auth',authRouter)
 app.use('/ap1/v1/user',userRouter)
 app.use("/api/v1/restuarant",resturantRouter)
+app.use("/api/restuarant",mainRestuarantRouter)
 app.use("/health",async(req:Request,res:Response)=>{
     res.send({message:"health OK!"})
 });
