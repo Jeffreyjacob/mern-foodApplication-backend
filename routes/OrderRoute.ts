@@ -9,6 +9,7 @@ router.post("/checkout/create-checkout-session",
     authMiddleware,
     jwtParse,
     Controller.createCheckoutSession
-)
+);
+router.post("/checkout/webhook",Controller.stripeWebhookHandler)
 
 export default router

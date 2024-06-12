@@ -19,17 +19,21 @@ cloudinary.config({
 
 const app = express()
 
-app.use(express.json())
 app.use(cors())
+
+app.use("/api/order/checkout/webhook",express.raw({type:"*/*"}));
+
+app.use(express.json())
+app.get("/health",async(req:Request,res:Response)=>{
+    res.send({message:"health OK!"})
+});
 
 app.use('/api/v1/auth',authRouter)
 app.use('/ap1/v1/user',userRouter)
 app.use("/api/v1/restuarant",resturantRouter)
 app.use("/api/restuarant",mainRestuarantRouter)
 app.use("/api/order",orderRouter)
-app.use("/health",async(req:Request,res:Response)=>{
-    res.send({message:"health OK!"})
-});
+
 app.use(errorHandlerMiddleWare)
 app.use(notFound)
 
