@@ -12,6 +12,14 @@ router.get("/search/:city",
     .withMessage("city parameter must be a valid string"),
     Controller.searchRestuarant
 )
+router.get("/:id",param("id")
+.isString()
+.trim()
+.notEmpty()
+.withMessage("id paramenter must be a valid string"),
+Controller.getRestuarant
+)
+
 
 
 export default router

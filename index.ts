@@ -9,6 +9,7 @@ import notFound from './middleware/notFound';
 import {v2 as cloudinary} from 'cloudinary';
 import resturantRouter from './routes/restaurant';
 import mainRestuarantRouter from './routes/RestaurantRoutes';
+import orderRouter from './routes/OrderRoute';
 
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -25,6 +26,7 @@ app.use('/api/v1/auth',authRouter)
 app.use('/ap1/v1/user',userRouter)
 app.use("/api/v1/restuarant",resturantRouter)
 app.use("/api/restuarant",mainRestuarantRouter)
+app.use("/api/order",orderRouter)
 app.use("/health",async(req:Request,res:Response)=>{
     res.send({message:"health OK!"})
 });
