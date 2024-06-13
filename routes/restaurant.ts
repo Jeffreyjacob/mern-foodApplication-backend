@@ -4,6 +4,7 @@ import  Controller from '../controllers/restuarant';
 import authMiddleware, { jwtParse } from '../middleware/authMiddleware';
 import { validateMyRestuarantRequest } from '../middleware/Validation';
 
+
 const router = express.Router();
 
 const storage = multer.memoryStorage();
@@ -27,5 +28,7 @@ authMiddleware,
 jwtParse,
 Controller.UpdateRestuarant
 )
+router.route("/order").get(authMiddleware,jwtParse,Controller.getMyRestaurantOrders)
+router.patch("/order/:orderId/status",authMiddleware,jwtParse,Controller.updateOrderRestaurantStatus)
 
 export default router;
